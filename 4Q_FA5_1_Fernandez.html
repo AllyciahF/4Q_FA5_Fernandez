@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <div id="r"></div>
+    <div id="s"></div>
+    
+    <script>
+        function nu() {
+            let num;
+            while (true) {
+                num = prompt("Please enter a number:");
+                if (!isNaN(num) && num !== null && num.trim() !== "") {
+                    return parseFloat(num);
+                } else {
+                    alert("That's not a number. Please enter a numerical value.");
+                }
+            }
+        }
+
+        function shape(num) {
+            const resultContainer = document.getElementById("r");
+            const shapeContainer = document.getElementById("s");
+            shapeContainer.innerHTML = "";
+            resultContainer.innerHTML = `Number inputted: ${num}`;
+
+            if (num % 2 === 1) {
+               
+                for (let x = num; x > 0; x--) {
+                    const row = Array(num).fill(x).join("");
+                    const p = document.createElement("p");
+                    p.classList.add('shape-row');
+                    p.textContent = row;
+                    shapeContainer.appendChild(p);
+                }
+            } else {
+                
+                for (let y = num; y > 0; y--) {
+                    const row = Array(y).fill(y).join("");
+                    const p = document.createElement("p");
+                    p.classList.add('shape-row');
+                    p.textContent = row;
+                    shapeContainer.appendChild(p);
+                }
+            }
+        }
+
+        const un = nu();
+        shape(un);
+    </script>
+    <style>
+        .shape-row {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</body>
+</html>

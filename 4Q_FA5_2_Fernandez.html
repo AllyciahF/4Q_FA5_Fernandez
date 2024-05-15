@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    
+</head>
+<body>
+    <div id="out"></div>
+        <input type="text" id="name" placeholder="Enter a name">
+        <button onclick="add()">Add</button>
+        <button onclick="remove()">Remove</button>
+
+        <div class="contact" id="list"></div>
+    
+
+    <script>
+        document.getElementById("out").innerHTML = "Output: "
+        const contact = [];
+
+        function Uc() {
+            const list = document.getElementById('list');
+            list.innerHTML = '';
+            contact.forEach(con => {
+                const contactDiv = document.createElement('div');
+                contactDiv.classList.add('con');
+                contactDiv.textContent = con;
+                list.appendChild(contactDiv);
+            });
+        }
+
+        function add() {
+            const nameInput = document.getElementById('name');
+            const name = nameInput.value.trim();
+            if (name) {
+                if (contact.length >= 7) {
+                    contact.shift(); 
+                }
+                contact.push(name);
+                nameInput.value = '';
+                Uc();
+            }
+        }
+
+        function remove() {
+            if (contact.length > 0) {
+                contact.pop(); 
+                Uc();
+            }
+        }
+
+        
+        Uc();
+    </script>
+    <style>
+       
+        
+    </style>
+</body>
+</html>
